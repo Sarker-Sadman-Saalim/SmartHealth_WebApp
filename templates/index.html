@@ -1,0 +1,247 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="card">
+    <div class="card-header">
+        📋 Complete Your Health Profile
+    </div>
+    <div class="card-body">
+        <form method="POST" action="/" autocomplete="off">
+
+            <!-- Personal Information -->
+            <h3 class="section-header">👤 Personal Information</h3>
+
+            <div class="grid">
+                <div class="form-group">
+                    <label class="form-label" for="Age">
+                        Age <span class="info-badge">in years</span>
+                    </label>
+                    <input type="number" class="form-input" id="Age" name="Age"
+                           min="1" max="120" required
+                           placeholder="Enter your age (e.g., 25)">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="Gender">Gender</label>
+                    <select class="form-input" id="Gender" name="Gender" required>
+                        <option value="">Select your gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Body Measurements -->
+            <h3 class="section-header">📏 Body Measurements</h3>
+
+            <div class="grid">
+                <div class="form-group">
+                    <label class="form-label" for="Height">
+                        Height <span class="info-badge">in meters</span>
+                    </label>
+                    <input type="number" class="form-input" id="Height" name="Height"
+                           min="1.0" max="2.5" step="0.01" required placeholder="e.g., 1.75">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="Weight">
+                        Weight <span class="info-badge">in kilograms</span>
+                    </label>
+                    <input type="number" class="form-input" id="Weight" name="Weight"
+                           min="20" max="250" step="0.5" required placeholder="e.g., 70">
+                </div>
+            </div>
+
+            <!-- Family & Health -->
+            <h3 class="section-header">🧬 Family & Health Background</h3>
+
+            <div class="form-group">
+                <label class="form-label">
+                    Do any close family members have overweight or obesity?
+                </label>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="family_yes"
+                               name="family_history_with_overweight" value="yes" required>
+                        <label for="family_yes">Yes</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="family_no"
+                               name="family_history_with_overweight" value="no" required>
+                        <label for="family_no">No</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Eating Habits -->
+            <h3 class="section-header">🍽️ Eating Habits</h3>
+
+            <div class="form-group">
+                <label class="form-label">
+                    How often do you eat high-calorie or fast foods? (FAVC)
+                </label>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="favc_yes" name="FAVC" value="yes" required>
+                        <label for="favc_yes">Often / regularly</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="favc_no" name="FAVC" value="no" required>
+                        <label for="favc_no">Rarely or never</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid">
+                <div class="form-group">
+                    <label class="form-label" for="FCVC">
+                        How often do you include vegetables with your main meals? (FCVC)
+                        <span class="info-badge">Never → Always</span>
+                    </label>
+                    <select class="form-input" id="FCVC" name="FCVC" required>
+                        <option value="">Select how often</option>
+                        <option value="1">Never or almost never</option>
+                        <option value="2">Sometimes</option>
+                        <option value="3">Almost always / always</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="NCP">
+                        How many main meals do you usually eat per day? (NCP)
+                        <span class="info-badge">1–4 meals</span>
+                    </label>
+                    <input type="number" class="form-input" id="NCP" name="NCP"
+                           min="1" max="4" step="0.1" required placeholder="e.g., 3">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="CAEC">
+                    Do you usually eat snacks between meals? (CAEC)
+                </label>
+                <select class="form-input" id="CAEC" name="CAEC" required>
+                    <option value="">Select how often</option>
+                    <option value="no">Never</option>
+                    <option value="Sometimes">Sometimes</option>
+                    <option value="Frequently">Frequently</option>
+                    <option value="Always">Always</option>
+                </select>
+            </div>
+
+            <!-- Hydration & Lifestyle -->
+            <h3 class="section-header">💧 Hydration & Lifestyle</h3>
+
+            <div class="grid">
+                <div class="form-group">
+                    <label class="form-label" for="CH2O">
+                        On a typical day, how much water do you drink? (CH2O)
+                        <span class="info-badge">approx. 1–3 liters</span>
+                    </label>
+                    <input type="number" class="form-input" id="CH2O" name="CH2O"
+                           min="1" max="3" step="0.1" required placeholder="e.g., 2.0">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="CALC">
+                        How often do you drink alcoholic beverages? (CALC)
+                    </label>
+                    <select class="form-input" id="CALC" name="CALC" required>
+                        <option value="">Select how often</option>
+                        <option value="no">Never</option>
+                        <option value="Sometimes">Sometimes</option>
+                        <option value="Frequently">Frequently</option>
+                        <option value="Always">Always</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">
+                    Do you currently smoke? (SMOKE)
+                </label>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="smoke_yes" name="SMOKE" value="yes" required>
+                        <label for="smoke_yes">Yes</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="smoke_no" name="SMOKE" value="no" required>
+                        <label for="smoke_no">No</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">
+                    Do you actively monitor or control your daily calorie intake? (SCC)
+                </label>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="scc_yes" name="SCC" value="yes" required>
+                        <label for="scc_yes">Yes</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="scc_no" name="SCC" value="no" required>
+                        <label for="scc_no">No</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Physical Activity -->
+            <h3 class="section-header">🏃 Physical Activity & Screen Time</h3>
+
+            <div class="form-group">
+                <label class="form-label" for="FAF">
+                    On how many days per week are you physically active? (FAF)
+                    <span class="info-badge">None → Daily</span>
+                </label>
+                <select class="form-input" id="FAF" name="FAF" required>
+                    <option value="">Select activity level</option>
+                    <option value="0">None (0 days per week)</option>
+                    <option value="1">Light (1–2 days per week)</option>
+                    <option value="2">Moderate (3–4 days per week)</option>
+                    <option value="3">Daily or almost daily (5–7 days)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="TUE">
+                    On a typical day, how many hours do you spend using screens while sitting? (TUE)
+                    <span class="info-badge">0–2 scale</span>
+                </label>
+                <input type="number" class="form-input" id="TUE" name="TUE"
+                       min="0" max="2" step="0.1" required
+                       placeholder="0 = very little, 2 = 6+ hours">
+            </div>
+
+            <!-- Transportation -->
+            <h3 class="section-header">🚶 Daily Transportation</h3>
+
+            <div class="form-group">
+                <label class="form-label" for="MTRANS">
+                    What is your main way of getting around each day? (MTRANS)
+                </label>
+                <select class="form-input" id="MTRANS" name="MTRANS" required>
+                    <option value="">Select your main transport</option>
+                    <option value="Walking">Walking</option>
+                    <option value="Bicycle">Bicycle</option>
+                    <option value="Automobile">Private car</option>
+                    <option value="Public_Transportation">Public transportation</option>
+                    <option value="Motorbike">Motorbike</option>
+                </select>
+            </div>
+
+            <!-- Submit -->
+            <div style="margin-top: 2.5rem; text-align: center;">
+                <button type="submit" class="btn btn-primary"
+                        style="width: 100%; max-width: 400px; padding: 1.2rem 2rem; font-size: 1.1rem;">
+                    🔍 Predict Obesity Level
+                </button>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+{% endblock %}
